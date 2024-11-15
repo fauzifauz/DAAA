@@ -1,0 +1,36 @@
+@startuml
+actor Pasien
+actor Admin
+actor Dokter
+
+' Use case untuk Pasien
+usecase "Melihat Jadwal Kunjungan" as UC1
+usecase "Detail Jadwal" as UC2
+Pasien -> UC1
+UC1 -> UC2
+
+' Use case untuk Admin
+usecase "Menambah Jadwal Kunjungan" as UC3
+usecase "Mengedit Jadwal Kunjungan" as UC4
+usecase "Menghapus Jadwal Kunjungan" as UC5
+usecase "Kelola Kunjungan Pasien" as UC6
+usecase "Detail Jadwal" as UC7
+Admin -> UC3
+Admin -> UC4
+Admin -> UC5
+Admin -> UC6
+Admin -> UC7
+
+' Use case untuk Dokter
+usecase "Melihat Jadwal Kunjungan Pasien" as UC8
+usecase "Detail Kunjungan" as UC9
+Dokter -> UC8
+UC8 -> UC9
+
+' Relasi antara use cases
+UC3 .down.> UC7 : Termasuk
+UC4 .down.> UC7 : Termasuk
+UC5 .down.> UC7 : Termasuk
+UC6 .down.> UC7 : Termasuk
+
+@enduml

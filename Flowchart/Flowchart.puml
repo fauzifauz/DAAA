@@ -1,0 +1,37 @@
+@startuml
+!define RECTANGLE class
+
+' Deklarasi aktor
+actor Pasien
+actor Admin
+actor Dokter
+
+' Deklarasi Proses
+rectangle "Pasien\nMelihat Jadwal" {
+  Pasien -> (Melihat Jadwal)
+  (Melihat Jadwal) -> (Detail Jadwal)
+}
+
+rectangle "Admin\nMengelola Jadwal" {
+  Admin -> (Menambah Jadwal)
+  Admin -> (Mengedit Jadwal)
+  Admin -> (Menghapus Jadwal)
+  Admin -> (Mengelola Jadwal Berdasarkan Dokter)
+  Admin -> (Mengelola Jadwal Berdasarkan Ruang Periksa)
+  (Menambah Jadwal) --> (Detail Jadwal)
+  (Mengedit Jadwal) --> (Detail Jadwal)
+  (Menghapus Jadwal) --> (Detail Jadwal)
+}
+
+rectangle "Dokter\nMelihat Jadwal" {
+  Dokter -> (Melihat Jadwal Kunjungan)
+  (Melihat Jadwal Kunjungan) -> (Detail Kunjungan)
+}
+
+' Relasi antar proses
+(Melihat Jadwal) --> (Melihat Jadwal Kunjungan)
+(Menambah Jadwal) --> (Melihat Jadwal Kunjungan)
+(Mengedit Jadwal) --> (Melihat Jadwal Kunjungan)
+(Menghapus Jadwal) --> (Melihat Jadwal Kunjungan)
+
+@enduml
